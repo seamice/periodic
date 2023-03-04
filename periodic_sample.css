@@ -1,0 +1,1523 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Montserrat");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-size: 16px;
+  color: white;
+  font-family: "Josefin Sans", "Roboto", sans-serif;
+  overflow: auto;
+}
+@media screen and (max-width: 1450px) {
+  body {
+    justify-content: normal;
+  }
+}
+
+main {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+@media screen and (max-width: 1450px) {
+  main {
+    justify-content: normal;
+  }
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  main {
+    height: 150vh;
+  }
+}
+@media screen and (min-aspect-ratio: 1/4) {
+  main {
+    height: 155vh;
+  }
+}
+@media screen and (max-aspect-ratio: 1/5) {
+  main {
+    height: 50vw;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+li {
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.flex-row-wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex-row-nowrap {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.flex-column-nowrap {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-column-wrap {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.group-period {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  min-width: 1450px;
+  background: radial-gradient(#636669, #252627);
+}
+
+.group__list,
+.period__list {
+  background: #2b2d2e;
+  box-shadow: 0 0 0.5rem #252627;
+}
+.group__item,
+.period__item {
+  cursor: default;
+}
+.group__item span,
+.period__item span {
+  transition: all 0.2s ease;
+}
+.group__item:hover span,
+.period__item:hover span {
+  box-shadow: 0 0 1rem #3b3a3a;
+  font-size: 1.5rem;
+}
+
+.group__list {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template: repeat(1, 46.6666666667px)/repeat(18, 70px);
+  grid-gap: 5px;
+  justify-content: center;
+  width: 100%;
+  min-width: 1300px;
+  height: 46.6666666667px;
+  margin: 0 auto;
+  font-size: 1rem;
+  z-index: 10;
+}
+.group__list.--is-fixed {
+  z-index: 20;
+}
+.group__list.--is-fixed .group-1::before {
+  display: none;
+}
+@media screen and (max-width: 1450px) {
+  .group__list.--is-fixed .group-1::after {
+    transform: translateX(-25%) rotate(0);
+  }
+}
+.group__item {
+  width: 70px;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid white;
+}
+.group__item span:nth-of-type(2) {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+}
+.group__item.group-1 {
+  border-left: 1px solid white;
+  transition: all 0.2s ease;
+}
+.group__item.group-1::after {
+  content: "族";
+  position: absolute;
+  top: 50%;
+  font-size: 0.75rem;
+  left: -40px;
+  transform: translateY(-50%);
+  cursor: auto;
+  transition: all 0.2s ease;
+}
+@media screen and (max-width: 1450px) {
+  .group__item.group-1::after {
+    top: 1.25rem;
+    left: -35px;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+.group__item.group-1::before {
+  transition: all 0.2s ease;
+}
+@media screen and (max-width: 1450px) {
+  .group__item.group-1::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: white;
+    transform: rotate(45deg);
+    left: -55px;
+  }
+}
+.group__item.group-15 span:nth-of-type(1), .group__item.group-16 span:nth-of-type(1), .group__item.group-17 span:nth-of-type(1) {
+  margin-top: 0.75rem;
+}
+
+.period__list {
+  position: absolute;
+  display: grid;
+  grid-template: repeat(8, 70px)/repeat(1, 46.6666666667px);
+  grid-gap: 5px;
+  width: 100%;
+  min-width: 46.6666666667px;
+  max-width: 46.6666666667px;
+  padding-top: 0.4rem;
+  font-size: 1rem;
+}
+.period__list.--is-fixed {
+  z-index: 10;
+}
+.period__list.--is-fixed .period-1::before {
+  content: "";
+  position: absolute;
+  background: #2b2d2e;
+  width: 100%;
+  height: 75%;
+  box-shadow: 0 0 0.5rem #252627;
+  transform: translate(0, -125%);
+}
+.period__list.--is-fixed .period-1::after {
+  transform: translateX(25%) rotate(0);
+}
+.period__item {
+  width: 46.6666666667px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.period__item.period-1 {
+  border-top: 1px solid white;
+}
+@media screen and (min-width: 1590px) {
+  .period__item.period-1::before {
+    content: "";
+    position: absolute;
+    background: #2b2d2e;
+    width: 100%;
+    height: 75%;
+    box-shadow: 0 0 0.5rem #252627;
+    transform: translate(0, -125%);
+  }
+}
+.period__item.period-1::after {
+  content: "周期";
+  position: absolute;
+  font-size: 0.75rem;
+  top: -0.5rem;
+  transform: translateY(-50%);
+  cursor: auto;
+  transition: all 0.2s ease;
+}
+@media screen and (max-width: 1450px) {
+  .period__item.period-1::after {
+    top: -1.25rem;
+    left: -3px;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+.dynamic-periodic-table {
+  display: grid;
+  position: absolute;
+  top: 46.6666666667px;
+  grid-gap: 5px;
+  grid-template: repeat(10, 70px)/repeat(18, 70px);
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 1300px;
+  margin-top: 0.4rem;
+}
+@media screen and (max-width: 1447.5px) {
+  .dynamic-periodic-table {
+    justify-content: normal;
+    margin-left: 53px;
+  }
+}
+
+.key,
+.element {
+  border: 2px solid;
+  /*font-family: "Montserrat", sans-serif;*/
+  font-family: "Microsoft YaHei",Georgia,Serif;
+}
+.key__abbr, .key__name,
+.element__abbr,
+.element__name {
+  flex-basis: 100%;
+  text-align: center;
+  padding-top: 3px;
+}
+.key__name,
+.element__name {
+  text-align: center;
+  word-break: break-word;
+}
+.key__abbr,
+.element__abbr {
+  font-size: 1rem;
+}
+.key__atomic-number,
+.element__atomic-number {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  font-size: 0.65rem;
+}
+
+.key {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  grid-area: 1/4/3/5;
+  align-self: center;
+  justify-self: center;
+  width: 122.5px;
+  height: 122.5px;
+  border-color: white;
+  font-size: 1rem;
+}
+.key__abbr {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+.key::after {
+  content: "符号示意:";
+  position: absolute;
+  top: -1.15rem;
+  left: -0.2rem;
+  font-family: "Josefin Sans", "Roboto", sans-serif;
+}
+
+.legend {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: 1/7/3/11;
+  width: 533.75px;
+  height: 122.5px;
+}
+.legend__element-type {
+  width: 402.5px;
+  justify-content: space-between;
+  height: 100%;
+}
+.legend__element-type-box {
+  cursor: default;
+}
+.legend__element-type__metals, .legend__element-type__nonmetals {
+  position: relative;
+  align-self: flex-end;
+  justify-content: space-between;
+  height: 85%;
+}
+.legend__element-type__metals__alkali-metal, .legend__element-type__metals__alkali-earth-metal, .legend__element-type__metals__transition-metal, .legend__element-type__metals__post-transition-metal, .legend__element-type__nonmetals__alkali-metal, .legend__element-type__nonmetals__alkali-earth-metal, .legend__element-type__nonmetals__transition-metal, .legend__element-type__nonmetals__post-transition-metal {
+  justify-content: center;
+  width: 35px;
+  height: 100%;
+  text-align: center;
+  margin-right: 5px;
+  border: 2px solid;
+  transition: all 0.2s ease;
+}
+.legend__element-type__metals__alkali-metal:hover, .legend__element-type__metals__alkali-earth-metal:hover, .legend__element-type__metals__transition-metal:hover, .legend__element-type__metals__post-transition-metal:hover, .legend__element-type__nonmetals__alkali-metal:hover, .legend__element-type__nonmetals__alkali-earth-metal:hover, .legend__element-type__nonmetals__transition-metal:hover, .legend__element-type__nonmetals__post-transition-metal:hover {
+  transform: scale(1.075);
+}
+.legend__element-type__metals__alkali-metal span, .legend__element-type__metals__alkali-earth-metal span, .legend__element-type__metals__transition-metal span, .legend__element-type__metals__post-transition-metal span, .legend__element-type__nonmetals__alkali-metal span, .legend__element-type__nonmetals__alkali-earth-metal span, .legend__element-type__nonmetals__transition-metal span, .legend__element-type__nonmetals__post-transition-metal span {
+  float: left;
+  font-size: 0.85rem;
+  width: 30px;
+}
+.legend__element-type__metals__lanthanoid-actinoid, .legend__element-type__nonmetals__lanthanoid-actinoid {
+  align-content: space-between;
+  justify-content: center;
+  width: 105px;
+  margin-right: 5px;
+}
+.legend__element-type__metals__lanthanoid-actinoid .lanthanoid,
+.legend__element-type__metals__lanthanoid-actinoid .actinoid, .legend__element-type__nonmetals__lanthanoid-actinoid .lanthanoid,
+.legend__element-type__nonmetals__lanthanoid-actinoid .actinoid {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48%;
+  border: 2px solid;
+  transition: all 0.2s ease;
+}
+.legend__element-type__metals__lanthanoid-actinoid .lanthanoid span,
+.legend__element-type__metals__lanthanoid-actinoid .actinoid span, .legend__element-type__nonmetals__lanthanoid-actinoid .lanthanoid span,
+.legend__element-type__nonmetals__lanthanoid-actinoid .actinoid span {
+  font-size: 0.85rem;
+}
+.legend__element-type__metals__lanthanoid-actinoid .lanthanoid:hover,
+.legend__element-type__metals__lanthanoid-actinoid .actinoid:hover, .legend__element-type__nonmetals__lanthanoid-actinoid .lanthanoid:hover,
+.legend__element-type__nonmetals__lanthanoid-actinoid .actinoid:hover {
+  transform: scale(1.075);
+}
+.legend__element-type__metals__lanthanoid-actinoid .lanthanoid, .legend__element-type__nonmetals__lanthanoid-actinoid .lanthanoid {
+  border-color: #f4c3a9;
+  color: #f4c3a9;
+}
+.legend__element-type__metals__lanthanoid-actinoid .actinoid, .legend__element-type__nonmetals__lanthanoid-actinoid .actinoid {
+  border-color: #ea9971;
+  color: #ea9971;
+}
+.legend__element-type__metals__alkali-metal, .legend__element-type__nonmetals__alkali-metal {
+  border-color: #e74d3c;
+  color: #e74d3c;
+}
+.legend__element-type__metals__alkali-metal span, .legend__element-type__nonmetals__alkali-metal span {
+  /* transform: rotate(90deg) translate(0, 280%); */
+  writing-mode: vertical-lr;
+  padding: 5px;
+  /*text-align: center;*/
+}
+.legend__element-type__metals__alkali-earth-metal, .legend__element-type__nonmetals__alkali-earth-metal {
+  border-color: #e77e23;
+  color: #e77e23;
+}
+.legend__element-type__metals__alkali-earth-metal span, .legend__element-type__nonmetals__alkali-earth-metal span {
+  /*transform: rotate(90deg) translate(0, 140%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+  /*-webkit-writing-mode: vertical-rl;*/
+}
+.legend__element-type__metals__transition-metal, .legend__element-type__nonmetals__transition-metal {
+  border-color: #f1c40e;
+  color: #f1c40e;
+}
+.legend__element-type__metals__transition-metal span, .legend__element-type__nonmetals__transition-metal span {
+  /*transform: rotate(90deg) translate(0, 138%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+}
+.legend__element-type__metals__post-transition-metal, .legend__element-type__nonmetals__post-transition-metal {
+  margin-right: 0;
+  border-color: #1abc9c;
+  color: #1abc9c;
+}
+.legend__element-type__metals__post-transition-metal span, .legend__element-type__nonmetals__post-transition-metal span {
+  /*transform: rotate(90deg) translate(0, 138%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+}
+.legend__element-type__metals::after, .legend__element-type__nonmetals::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-top: -3px;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  transform: translateY(-100%);
+}
+.legend__element-type__metals {
+  width: 245px;
+}
+.legend__element-type__metals::after {
+  content: "金属";
+}
+.legend__element-type__nonmetals {
+  width: 70px;
+}
+.legend__element-type__nonmetals__other-nonmetal, .legend__element-type__nonmetals__noble-gas {
+  width: 32.5px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.legend__element-type__nonmetals__other-nonmetal span, .legend__element-type__nonmetals__noble-gas span {
+  /*transform: rotate(90deg) translate(35%, 138%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+  padding-top: 15px;
+}
+.legend__element-type__nonmetals__other-nonmetal:hover, .legend__element-type__nonmetals__noble-gas:hover {
+  transform: scale(1.075);
+}
+.legend__element-type__nonmetals__other-nonmetal {
+  margin-right: 5px;
+  border: 2px solid #95a6a7;
+  color: #95a6a7;
+}
+.legend__element-type__nonmetals__noble-gas {
+  border: 2px solid #8d43ad;
+  color: #8d43ad;
+}
+.legend__element-type__nonmetals__noble-gas span {
+  /*transform: rotate(90deg) translate(45%, 280%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+  padding-top: 20px;
+}
+.legend__element-type__nonmetals span {
+  float: left;
+  font-size: 0.85rem;
+  width: 30px;
+}
+.legend__element-type__nonmetals::after {
+  content: "非金属";
+}
+.legend__element-type__metalloid {
+  height: 100%;
+  width: 35px;
+  color: #3398db;
+  border: 2px solid #3398db;
+  transition: all 0.2s ease;
+}
+.legend__element-type__metalloid span {
+  /*float: left;*/
+  float: center;
+  font-size: 0.85rem;
+  width: 30px;
+  /*transform: rotate(90deg) translate(70%, 265%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+  padding-top: 35px;
+}
+.legend__element-type__metalloid:hover {
+  transform: scale(1.075);
+}
+.legend__element-type__unknown {
+  width: 35px;
+  height: 100%;
+  border: 2px solid #b7950b;
+  color: #b7950b;
+  transition: all 0.2s ease;
+}
+.legend__element-type__unknown span {
+  float: left;
+  font-size: 0.85rem;
+  width: 30px;
+  /*transform: rotate(90deg) translate(0, 55%);*/
+  writing-mode: vertical-lr;
+  padding: 5px;
+  padding-top: 45px;
+}
+.legend__element-type__unknown:hover {
+  transform: scale(1.075);
+}
+.legend__element-state {
+  justify-content: space-between;
+  align-content: space-between;
+  width: 125px;
+  height: 100%;
+}
+.legend__element-state__gas, .legend__element-state__liquid, .legend__element-state__solid, .legend__element-state__unknown {
+  justify-content: center;
+  align-items: center;
+  width: 58.75px;
+  height: 58.75px;
+  border: 2px white;
+  transition: all 0.2s ease;
+}
+.legend__element-state__gas span, .legend__element-state__liquid span, .legend__element-state__solid span, .legend__element-state__unknown span {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+}
+.legend__element-state__gas:hover, .legend__element-state__liquid:hover, .legend__element-state__solid:hover, .legend__element-state__unknown:hover {
+  transform: scale(1.075);
+}
+.legend__element-state__gas {
+  border-style: dashed;
+}
+.legend__element-state__liquid {
+  border-style: solid;
+}
+.legend__element-state__solid {
+  border: double;
+}
+.legend__element-state__unknown {
+  border-style: dotted;
+}
+
+.temperature {
+  align-items: center;
+  justify-content: space-between;
+  grid-area: 3/3/3/13;
+  margin-left: 46.6666666667px;
+}
+.temperature__inputs {
+  align-items: center;
+}
+.temperature__inputs__slider {
+  position: relative;
+  width: 397.5px;
+  height: 3.3333333333px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 0;
+  margin: 0 10px 0 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+.temperature__inputs__slider::after {
+  content: "拖动改变温度及元素状态";
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Josefin Sans", "Roboto", sans-serif;
+  color: white;
+}
+.temperature__inputs__slider::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+          appearance: none;
+  border-radius: 50%;
+  background-color: #6f7376;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.temperature__inputs__slider::-webkit-slider-thumb::after {
+  background-color: #6f7376;
+}
+.temperature__inputs__slider::-webkit-slider-thumb:hover {
+  background-color: #a3a6a8;
+}
+.temperature__inputs__slider::-webkit-slider-thumb:active::-webkit-slider-thumb {
+  background-color: #898c90;
+}
+.temperature__inputs__slider::-moz-range-thumb {
+  width: 17.5px;
+  height: 17.5px;
+  -moz-appearance: none;
+       appearance: none;
+  border-radius: 50%;
+  background-color: #6f7376;
+  cursor: pointer;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.temperature__inputs__slider::-moz-range-thumb:hover {
+  background-color: #a3a6a8;
+}
+.temperature__inputs__slider::-moz-range-thumb::-moz-range-thumb {
+  background-color: #898c90;
+}
+.temperature__inputs ::-moz-range-track {
+  background: white;
+  border: 0;
+}
+.temperature__inputs input::-moz-focus-inner,
+.temperature__inputs input::-moz-focus-outer {
+  border: 0;
+}
+.temperature__inputs__result {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 35px;
+  color: white;
+  border: 2px solid #6f7376;
+}
+.temperature__inputs__result::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  border-top: 5px solid transparent;
+  border-right: 7.5px solid #6f7376;
+  border-bottom: 5px solid transparent;
+  transform: translate(-100%, -100%);
+}
+.temperature__unit-conversion {
+  align-content: space-evenly;
+  text-align: center;
+  width: 105px;
+  height: 100%;
+}
+.temperature__unit-conversion p {
+  flex-basis: 100%;
+  opactity: 0.5;
+}
+.temperature .reset__temperature {
+  opacity: 0;
+  visibility: hidden;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  width: 105px;
+  height: 46.6666666667px;
+  overflow: hidden;
+  background: transparent;
+  margin-right: 1.85rem;
+  font-family: "Josefin Sans", "Roboto", sans-serif;
+  color: white;
+  border: 2px solid #6f7376;
+  background: none;
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+.temperature .reset__temperature span {
+  position: relative;
+  z-index: 100;
+}
+.temperature .reset__temperature.--is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.temperature .reset__temperature::before, .temperature .reset__temperature::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #6f7376;
+  border-radius: 50%;
+}
+.temperature .reset__temperature::before {
+  left: -1.25rem;
+  transform: translate(-50%, -50%);
+}
+.temperature .reset__temperature::after {
+  right: -1.25rem;
+  transform: translate(50%, -50%);
+}
+.temperature .reset__temperature:hover {
+  -webkit-animation: focus 0.001s 0.8s forwards;
+          animation: focus 0.001s 0.8s forwards;
+}
+.temperature .reset__temperature:hover::before {
+  -webkit-animation: criss-cross-left 1s both alternate, lighten-background 0.001s 0.8s forwards;
+          animation: criss-cross-left 1s both alternate, lighten-background 0.001s 0.8s forwards;
+}
+.temperature .reset__temperature:hover::after {
+  -webkit-animation: criss-cross-right 1s both alternate, lighten-background 0.001s 0.8s forwards;
+          animation: criss-cross-right 1s both alternate, lighten-background 0.001s 0.8s forwards;
+}
+.temperature .reset__temperature:active {
+  transform: scale(0.95);
+}
+
+.element {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+.element[data-element-type=other-nonmetal] {
+  color: #95a6a7;
+  border-color: #95a6a7;
+}
+.element[data-element-type=alkali-metal] {
+  color: #e74d3c;
+  border-color: #e74d3c;
+}
+.element[data-element-type=alkali-earth-metal] {
+  color: #e77e23;
+  border-color: #e77e23;
+}
+.element[data-element-type=transition-metal] {
+  color: #f1c40e;
+  border-color: #f1c40e;
+}
+.element[data-element-type=Lanthanoid] {
+  color: #f4c3a9;
+  border-color: #f4c3a9;
+}
+.element[data-element-type=Actinoid] {
+  color: #ea9971;
+  border-color: #ea9971;
+}
+.element[data-element-type=post-transition-metal] {
+  color: #1abc9c;
+  border-color: #1abc9c;
+}
+.element[data-element-type=metalloid] {
+  color: #3398db;
+  border-color: #3398db;
+}
+.element[data-element-type=noble-gas] {
+  color: #8d43ad;
+  border-color: #8d43ad;
+}
+.element[data-element-type=unknown] {
+  color: #b7950b;
+  border-color: #b7950b;
+}
+.element[data-element-state=gas] {
+  border-style: dashed;
+}
+.element[data-element-state=liquid] {
+  border-style: solid;
+}
+.element[data-element-state=solid] {
+  border: double;
+}
+.element[data-element-state=unknown] {
+  border-style: dotted;
+}
+.element[data-element-name=Hydrogen] {
+  grid-area: 1/1;
+  margin-top: 1px;
+}
+.element[data-element-name=Lithium] {
+  grid-area: 2/1;
+}
+.element[data-element-name=Sodium] {
+  grid-area: 3/1;
+}
+.element[data-element-name=Potassium] {
+  grid-area: 4/1;
+}
+.element[data-element-name=Rubidium] {
+  grid-area: 5/1;
+}
+.element[data-element-name=Caesium] {
+  grid-area: 6/1;
+}
+.element[data-element-name=Francium] {
+  grid-area: 7/1;
+}
+.element[data-element-name=Berilyum] {
+  grid-area: 2/2;
+}
+.element[data-element-name=Magnesium] {
+  grid-area: 3/2;
+}
+.element[data-element-name=Calcium] {
+  grid-area: 4/2;
+}
+.element[data-element-name=Stronium] {
+  grid-area: 5/2;
+}
+.element[data-element-name=Barium] {
+  grid-area: 6/2;
+}
+.element[data-element-name=Radium] {
+  grid-area: 7/2;
+}
+.element[data-element-name=Scandium] {
+  grid-area: 4/3;
+}
+.element[data-element-name=Yttrium] {
+  grid-area: 5/3;
+}
+.element[data-element-name=Lanthanoids] {
+  grid-area: 6/3;
+}
+.element[data-element-name=Actinoids] {
+  grid-area: 7/3;
+}
+.element[data-element-name=Titanium] {
+  grid-area: 4/4;
+}
+.element[data-element-name=Zirconium] {
+  grid-area: 5/4;
+}
+.element[data-element-name=Hafnium] {
+  grid-area: 6/4;
+}
+.element[data-element-name=Rutherfordium] {
+  grid-area: 7/4;
+}
+.element[data-element-name=Vanadium] {
+  grid-area: 4/5;
+}
+.element[data-element-name=Niobium] {
+  grid-area: 5/5;
+}
+.element[data-element-name=Tantalum] {
+  grid-area: 6/5;
+}
+.element[data-element-name=Dubnium] {
+  grid-area: 7/5;
+}
+.element[data-element-name=Chromium] {
+  grid-area: 4/6;
+}
+.element[data-element-name=Molybdenum] {
+  grid-area: 5/6;
+}
+.element[data-element-name=Tungsten] {
+  grid-area: 6/6;
+}
+.element[data-element-name=Seaborgium] {
+  grid-area: 7/6;
+}
+.element[data-element-name=Manganese] {
+  grid-area: 4/7;
+}
+.element[data-element-name=Technetium] {
+  grid-area: 5/7;
+}
+.element[data-element-name=Rhenium] {
+  grid-area: 6/7;
+}
+.element[data-element-name=Bohrium] {
+  grid-area: 7/7;
+}
+.element[data-element-name=Iron] {
+  grid-area: 4/8;
+}
+.element[data-element-name=Ruthenium] {
+  grid-area: 5/8;
+}
+.element[data-element-name=Osmium] {
+  grid-area: 6/8;
+}
+.element[data-element-name=Hassium] {
+  grid-area: 7/8;
+}
+.element[data-element-name=Cobalt] {
+  grid-area: 4/9;
+}
+.element[data-element-name=Rhodium] {
+  grid-area: 5/9;
+}
+.element[data-element-name=Iridium] {
+  grid-area: 6/9;
+}
+.element[data-element-name=Meitnerium] {
+  grid-area: 7/9;
+}
+.element[data-element-name=Nickel] {
+  grid-area: 4/10;
+}
+.element[data-element-name=Palladium] {
+  grid-area: 5/10;
+}
+.element[data-element-name=Platinum] {
+  grid-area: 6/10;
+}
+.element[data-element-name=Darmstadtium] {
+  grid-area: 7/10;
+}
+.element[data-element-name=Copper] {
+  grid-area: 4/11;
+}
+.element[data-element-name=Silver] {
+  grid-area: 5/11;
+}
+.element[data-element-name=Gold] {
+  grid-area: 6/11;
+}
+.element[data-element-name=Roentgenium] {
+  grid-area: 7/11;
+}
+.element[data-element-name=Zinc] {
+  grid-area: 4/12;
+}
+.element[data-element-name=Cadmium] {
+  grid-area: 5/12;
+}
+.element[data-element-name=Mercury] {
+  grid-area: 6/12;
+}
+.element[data-element-name=Copernicium] {
+  grid-area: 7/12;
+}
+.element[data-element-name=Boron] {
+  grid-area: 2/13;
+}
+.element[data-element-name=Aluminium] {
+  grid-area: 3/13;
+}
+.element[data-element-name=Galium] {
+  grid-area: 4/13;
+}
+.element[data-element-name=Indium] {
+  grid-area: 5/13;
+}
+.element[data-element-name=Thalium] {
+  grid-area: 6/13;
+}
+.element[data-element-name=Nihonium] {
+  grid-area: 7/13;
+}
+.element[data-element-name=Carbon] {
+  grid-area: 2/14;
+}
+.element[data-element-name=Silicon] {
+  grid-area: 3/14;
+}
+.element[data-element-name=Germanium] {
+  grid-area: 4/14;
+}
+.element[data-element-name=Tin] {
+  grid-area: 5/14;
+}
+.element[data-element-name=Lead] {
+  grid-area: 6/14;
+}
+.element[data-element-name=Flevorium] {
+  grid-area: 7/14;
+}
+.element[data-element-name=Nitrogen] {
+  grid-area: 2/15;
+}
+.element[data-element-name=Phosphorus] {
+  grid-area: 3/15;
+}
+.element[data-element-name=Arsenic] {
+  grid-area: 4/15;
+}
+.element[data-element-name=Antimony] {
+  grid-area: 5/15;
+}
+.element[data-element-name=Bismuth] {
+  grid-area: 6/15;
+}
+.element[data-element-name=Moscovium] {
+  grid-area: 7/15;
+}
+.element[data-element-name=Oxygen] {
+  grid-area: 2/16;
+}
+.element[data-element-name=Sulfur] {
+  grid-area: 3/16;
+}
+.element[data-element-name=Selenium] {
+  grid-area: 4/16;
+}
+.element[data-element-name=Tellurium] {
+  grid-area: 5/16;
+}
+.element[data-element-name=Polonium] {
+  grid-area: 6/16;
+}
+.element[data-element-name=Livemorium] {
+  grid-area: 7/16;
+}
+.element[data-element-name=Fluorine] {
+  grid-area: 2/17;
+}
+.element[data-element-name=Chlorine] {
+  grid-area: 3/17;
+}
+.element[data-element-name=Bromine] {
+  grid-area: 4/17;
+}
+.element[data-element-name=Iodine] {
+  grid-area: 5/17;
+}
+.element[data-element-name=Astatine] {
+  grid-area: 6/17;
+}
+.element[data-element-name=Tennessine] {
+  grid-area: 7/17;
+}
+.element[data-element-name=Helium] {
+  grid-area: 1/18;
+}
+.element[data-element-name=Neon] {
+  grid-area: 2/18;
+}
+.element[data-element-name=Argon] {
+  grid-area: 3/18;
+}
+.element[data-element-name=Krypton] {
+  grid-area: 4/18;
+}
+.element[data-element-name=Xenon] {
+  grid-area: 5/18;
+}
+.element[data-element-name=Radon] {
+  grid-area: 6/18;
+}
+.element[data-element-name=Oganesson] {
+  grid-area: 7/18;
+}
+.element[data-element-name=Lanthanum] {
+  grid-area: 9/3;
+}
+.element[data-element-name=Cerium] {
+  grid-area: 9/4;
+}
+.element[data-element-name=Praseodymium] {
+  grid-area: 9/5;
+}
+.element[data-element-name=Neodymium] {
+  grid-area: 9/6;
+}
+.element[data-element-name=Promethium] {
+  grid-area: 9/7;
+}
+.element[data-element-name=Samarium] {
+  grid-area: 9/8;
+}
+.element[data-element-name=Europium] {
+  grid-area: 9/9;
+}
+.element[data-element-name=Gadolinium] {
+  grid-area: 9/10;
+}
+.element[data-element-name=Terbium] {
+  grid-area: 9/11;
+}
+.element[data-element-name=Dysprosium] {
+  grid-area: 9/12;
+}
+.element[data-element-name=Holmium] {
+  grid-area: 9/13;
+}
+.element[data-element-name=Erbium] {
+  grid-area: 9/14;
+}
+.element[data-element-name=Thulium] {
+  grid-area: 9/15;
+}
+.element[data-element-name=Ytterbium] {
+  grid-area: 9/16;
+}
+.element[data-element-name=Lutetium] {
+  grid-area: 9/17;
+}
+.element[data-element-name=Actinium] {
+  grid-area: 10/3;
+}
+.element[data-element-name=Thorium] {
+  grid-area: 10/4;
+}
+.element[data-element-name=Protactinium] {
+  grid-area: 10/5;
+}
+.element[data-element-name=Uranium] {
+  grid-area: 10/6;
+}
+.element[data-element-name=Neptunium] {
+  grid-area: 10/7;
+}
+.element[data-element-name=Plutonium] {
+  grid-area: 10/8;
+}
+.element[data-element-name=Americium] {
+  grid-area: 10/9;
+}
+.element[data-element-name=Curium] {
+  grid-area: 10/10;
+}
+.element[data-element-name=Berkelium] {
+  grid-area: 10/11;
+}
+.element[data-element-name=Californium] {
+  grid-area: 10/12;
+}
+.element[data-element-name=Einsteinium] {
+  grid-area: 10/13;
+}
+.element[data-element-name=Fermium] {
+  grid-area: 10/14;
+}
+.element[data-element-name=Mendelevium] {
+  grid-area: 10/15;
+}
+.element[data-element-name=Nobelium] {
+  grid-area: 10/16;
+}
+.element[data-element-name=Lawrencium] {
+  grid-area: 10/17;
+}
+.element .tooltip {
+  position: absolute;
+  padding: 0.25rem;
+  text-align: center;
+  background-color: #191a1a;
+  color: white;
+  border-radius: 1px;
+  visibility: hidden;
+  z-index: 100;
+  transition: visibility 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.element .tooltip.--is-hidden {
+  display: none;
+}
+.element .tooltip.right-tooltip {
+  left: 100%;
+  margin-left: 0.75rem;
+}
+.element .tooltip.right-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  border-top: 5px solid transparent;
+  border-right: 7.5px solid #191a1a;
+  border-bottom: 5px solid transparent;
+  transform: translateY(-50%);
+}
+.element .tooltip.left-tooltip {
+  right: 100%;
+  margin-right: 0.75rem;
+}
+.element .tooltip.left-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  border-top: 5px solid transparent;
+  border-left: 7.5px solid #191a1a;
+  border-bottom: 5px solid transparent;
+  transform: translateY(-50%);
+}
+.element .tooltip.top-tooltip {
+  top: -0.75rem;
+  transform: translateY(-100%);
+}
+.element .tooltip.top-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -0.9rem;
+  left: 50%;
+  border-top: 7.5px solid #191a1a;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  transform: translate(-50%, -100%);
+}
+.element .tooltip.bottom-tooltip {
+  bottom: -0.75rem;
+  transform: translateY(100%);
+}
+.element .tooltip.bottom-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  border-bottom: 7.5px solid #191a1a;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  /*transform: translate(-50%, -100%);*/
+}
+.element:hover:not([data-element-name=Lanthanoids]):not([data-element-name=Actinoids]), .element.--is-active {
+  box-shadow: 0 0 1rem #888686;
+  transform: scale(1.075);
+}
+.element.--is-triggered {
+  z-index: 10;
+}
+.element:hover[data-element-name=Lanthanoids], .element:hover[data-element-name=Actinoids] {
+  transform: scale(1.075);
+}
+.element:hover .tooltip {
+  visibility: visible;
+}
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(59, 58, 58, 0.975);
+  z-index: 1000;
+  will-change: visibility, opacity;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal__dialog {
+  position: relative;
+  max-width: 750px;
+  width: 100%;
+  max-height: 90%;
+  height: 100%;
+  padding: 1.2rem;
+  border: none;
+  background: none;
+}
+.modal__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  opacity: 0;
+  border: 3px solid transparent;
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal__content.--is-visible {
+  opacity: 1;
+  border: 3px solid transparent;
+  color: white;
+}
+.modal__content.--is-visible::before, .modal__content.--is-visible::after {
+  transform: scale(1);
+}
+.modal__content .atom {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  -webkit-animation: up-and-down 7s ease infinite;
+          animation: up-and-down 7s ease infinite;
+}
+.modal__content .atom__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #7c7979;
+  z-index: 0;
+}
+.modal__content .atom::before, .modal__content .atom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -65px -65px 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #7c7979;
+}
+.modal__content .atom::before {
+  z-index: 1;
+  -webkit-animation: clockwise-rotation-2 2s linear infinite;
+          animation: clockwise-rotation-2 2s linear infinite;
+}
+.modal__content .atom::after {
+  z-index: 2;
+  -webkit-animation: clockwise-rotation-1 2s linear infinite;
+          animation: clockwise-rotation-1 2s linear infinite;
+}
+.modal__content::before, .modal__content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  transform: scale(0);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal__content::before {
+  border-bottom: 3px solid #7c7979;
+  border-left: 3px solid #7c7979;
+  transform-origin: 0 100%;
+}
+.modal__content::after {
+  border-top: 3px solid #7c7979;
+  border-right: 3px solid #7c7979;
+  transform-origin: 100% 0%;
+}
+.modal__content__properties {
+  display: grid;
+  grid-template: repeat(auto-fill, minmax(70px, 1fr))/repeat(10, 70px);
+  height: 100%;
+}
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0.15rem;
+  background: transparent;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal__close svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid #7c7979;
+  fill: #7c7979;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal__close:hover svg {
+  background: #7c7979;
+  fill: #3b3a3a;
+}
+.modal.--modal__background {
+  background: #888686;
+}
+.modal.--is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@-webkit-keyframes criss-cross-left {
+  0% {
+    left: -1.5rem;
+  }
+  50% {
+    left: 50%;
+    width: 15px;
+    height: 15px;
+  }
+  100% {
+    left: 50%;
+    width: 150%;
+    height: 150%;
+  }
+}
+
+@keyframes criss-cross-left {
+  0% {
+    left: -1.5rem;
+  }
+  50% {
+    left: 50%;
+    width: 15px;
+    height: 15px;
+  }
+  100% {
+    left: 50%;
+    width: 150%;
+    height: 150%;
+  }
+}
+@-webkit-keyframes criss-cross-right {
+  0% {
+    right: -1.5rem;
+  }
+  50% {
+    right: 50%;
+    width: 15px;
+    height: 15px;
+  }
+  100% {
+    right: 50%;
+    width: 150%;
+    height: 150%;
+  }
+}
+@keyframes criss-cross-right {
+  0% {
+    right: -1.5rem;
+  }
+  50% {
+    right: 50%;
+    width: 15px;
+    height: 15px;
+  }
+  100% {
+    right: 50%;
+    width: 150%;
+    height: 150%;
+  }
+}
+@-webkit-keyframes focus {
+  to {
+    border: 2px solid #3e4042;
+    color: #3e4042;
+    font-weight: 600;
+    box-shadow: 0 0 1rem #888686;
+  }
+}
+@keyframes focus {
+  to {
+    border: 2px solid #3e4042;
+    color: #3e4042;
+    font-weight: 600;
+    box-shadow: 0 0 1rem #888686;
+  }
+}
+@-webkit-keyframes lighten-background {
+  to {
+    background-color: #6f7376;
+  }
+}
+@keyframes lighten-background {
+  to {
+    background-color: #6f7376;
+  }
+}
+@-webkit-keyframes clockwise-rotation-1 {
+  from {
+    transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+  }
+  to {
+    transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+  }
+}
+@keyframes clockwise-rotation-1 {
+  from {
+    transform: perspective(1000px) rotate3d(1, 1, 1, 0deg);
+  }
+  to {
+    transform: perspective(1000px) rotate3d(1, 1, 1, 360deg);
+  }
+}
+@-webkit-keyframes clockwise-rotation-2 {
+  from {
+    transform: perspective(1000px) rotate3d(1, -1, 1, 0deg);
+  }
+  to {
+    transform: perspective(1000px) rotate3d(1, -1, 1, 360deg);
+  }
+}
+@keyframes clockwise-rotation-2 {
+  from {
+    transform: perspective(1000px) rotate3d(1, -1, 1, 0deg);
+  }
+  to {
+    transform: perspective(1000px) rotate3d(1, -1, 1, 360deg);
+  }
+}
+@-webkit-keyframes up-and-down {
+  0% {
+    margin-top: -1rem;
+  }
+  50% {
+    margin-top: 1rem;
+  }
+  100% {
+    margin-top: -1rem;
+  }
+}
+@keyframes up-and-down {
+  0% {
+    margin-top: -1rem;
+  }
+  50% {
+    margin-top: 1rem;
+  }
+  100% {
+    margin-top: -1rem;
+  }
+}

@@ -1,0 +1,953 @@
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/png" href="pm_science_logo.png">
+  <!--meta name="apple-mobile-web-app-title" content="CodePen"-->
+  <link rel="shortcut icon" type="image/x-icon" href="pm_science_logo.png">
+  <link rel="mask-icon" type="image/x-icon" href="pm_science_logo.png" color="#111">
+  <title>八戒于猴哥-动态元素周期表</title>
+  <link rel="stylesheet" href="reset.min.css">
+  <link rel="stylesheet" type="text/css" href="periodic_sample.css" />
+
+  <script>
+    window.console = window.console || function(t) {};
+  </script>
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+</head>
+
+<body translate="no">
+  <main>
+  <section class="group-period">
+    <ul class="group__list --is-fixed">
+      <li class="group__item flex-row-wrap group-1"><span>1</span></li>
+      <li class="group__item flex-row-wrap group-2"><span>2</span></li>
+      <li class="group__item flex-row-wrap group-3"><span>3</span></li>
+      <li class="group__item flex-row-wrap group-4"><span>4</span></li>
+      <li class="group__item flex-row-wrap group-5"><span>5</span></li>
+      <li class="group__item flex-row-wrap group-6"><span>6</span></li>
+      <li class="group__item flex-row-wrap group-7"><span>7</span></li>
+      <li class="group__item flex-row-wrap group-8"><span>8</span></li>
+      <li class="group__item flex-row-wrap group-9"><span>9</span></li>
+      <li class="group__item flex-row-wrap group-10"><span>10</span></li>
+      <li class="group__item flex-row-wrap group-11"><span>11</span></li>
+      <li class="group__item flex-row-wrap group-12"><span>12</span></li>
+      <li class="group__item flex-row-wrap group-13"><span>13</span></li>
+      <li class="group__item flex-row-wrap group-14"><span>14</span></li>
+      <li class="group__item flex-row-wrap group-15"><span>15</span><span>氮族</span></li>
+      <li class="group__item flex-row-wrap group-16"><span>16</span><span>氧族</span></li>
+      <li class="group__item flex-row-wrap group-17"><span>17</span><span>卤族</span></li>
+      <li class="group__item flex-row-wrap group-18"><span>18</span></li>
+    </ul>
+    <ul class="period__list" style="left: 0px;">
+      <li class="period__item flex-row-wrap period-1"><span>1</span></li>
+      <li class="period__item flex-row-wrap period-2"><span>2</span></li>
+      <li class="period__item flex-row-wrap period-3"><span>3</span></li>
+      <li class="period__item flex-row-wrap period-4"><span>4</span></li>
+      <li class="period__item flex-row-wrap period-5"><span>5</span></li>
+      <li class="period__item flex-row-wrap period-6"><span>6</span></li>
+      <li class="period__item flex-row-wrap period-7"><span>7</span></li>
+    </ul>
+  </section>
+  <section class="dynamic-periodic-table">
+    <div class="key flex-row-wrap">
+      <abbr class="key__abbr">符号</abbr>
+      <span class="key__name">中文名称</span>
+      <span class="key__atomic-number">质子数</span>
+      <span class="key__atomic-mass">质子量</span>
+    </div>
+    <section class="legend flex-row-nowrap">
+      <article class="legend__element-type flex-row-wrap">
+        <div class="legend__element-type__metals flex-row-nowrap">
+          <div class="legend__element-type__metals__alkali-metal legend-box flex-column-wrap" data-element-type="alkali-metal"><span>碱性金属</span></div>
+          <div class="legend__element-type__metals__alkali-earth-metal legend-box flex-column-wrap" data-element-type="alkali-earth-metal"><span>碱土金属</span></div>
+          <div class="legend__element-type__metals__lanthanoid-actinoid flex-row-wrap">
+            <div class="lanthanoid flex-row-wrap legend-box" data-element-type="Lanthanoid"><span>镧系</span></div>
+            <div class="actinoid flex-row-wrap legend-box" data-element-type="Actinoid"><span>锕系</span></div>
+          </div>
+          <div class="legend__element-type__metals__transition-metal legend-box flex-column-wrap" data-element-type="transition-metal"><span>过渡金属</span></div>
+          <div class="legend__element-type__metals__post-transition-metal legend-box flex-column-wrap" data-element-type="post-transition-metal"><span>后过渡金属</span></div>
+        </div>
+        <div class="legend__element-type__metalloid legend-box" data-element-type="metalloid"><span>类金属</span></div>
+        <div class="legend__element-type__nonmetals flex-row-wrap">
+          <div class="legend__element-type__nonmetals__other-nonmetal legend-box" data-element-type="other-nonmetal"><span>其他非金属</span></div>
+          <div class="legend__element-type__nonmetals__noble-gas legend-box" data-element-type="noble-gas"><span>惰性气体</span></div>
+        </div>
+        <div class="legend__element-type__unknown legend-box flex-row-wrap" data-element-type="unknown"><span>未知</span>
+        </div>
+      </article>
+      <article class="legend__element-state flex-row-wrap">
+        <div class="legend__element-state__gas legend-box flex-row-wrap" data-element-state="gas"><span>气体</span></div>
+        <div class="legend__element-state__liquid legend-box flex-row-wrap" data-element-state="liquid"><span>液体</span></div>
+        <div class="legend__element-state__solid legend-box flex-row-wrap" data-element-state="solid"><span>固体</span></div>
+        <div class="legend__element-state__unknown legend-box flex-row-wrap" data-element-state="unknown"><span>未知</span></div>
+      </article>
+    </section>
+    <section class="temperature flex-row-nowrap">
+      <div class="temperature__inputs flex-row-nowrap">
+        <input class="temperature__inputs__slider" name="temperature__inputs__slider" type="range" min="0" max="7000" value="273">
+        <p class="temperature__inputs__result flex-row-wrap">273 K</p>
+      </div>
+      <div class="temperature__unit-conversion flex-row-wrap">
+        <p class="celsius">0ºC</p>
+        <p class="farenheit">31.4ºF</p>
+      </div>
+      <button class="reset__temperature flex-row-wrap"><span>回到零度</span></button>
+    </section>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="gas" data-element-melting-point="13.99" data-element-boiling-point="20.271" data-element-period="1" data-element-group="1" data-element-name="Hydrogen">
+      <abbr class="element__abbr">H</abbr>
+      <span class="element__name">氢</span>
+      <span class="element__atomic-number">1</span>
+      <span class="element__atomic-mass">1.008</span>
+      <p class="tooltip right-tooltip">氢(qīng) - Hydrogen</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="453.65" data-element-boiling-point="1603" data-element-period="2" data-element-group="1" data-element-name="Lithium">
+      <abbr class="element__abbr">Li</abbr>
+      <span class="element__name">锂</span>
+      <span class="element__atomic-number">3</span>
+      <span class="element__atomic-mass">6.940</span>
+      <p class="tooltip top-tooltip">锂(lǐ) - Lithium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="370.944" data-element-boiling-point="1156.090" data-element-period="3" data-element-group="1" data-element-name="Sodium">
+      <abbr class="element__abbr">Na</abbr>
+      <span class="element__name">钠</span>
+      <span class="element__atomic-number">11</span>
+      <span class="element__atomic-mass">22.989</span>
+      <p class="tooltip top-tooltip">钠(nà)</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="336.7" data-element-boiling-point="1032" data-element-period="4" data-element-group="1" data-element-name="Potassium">
+      <abbr class="element__abbr">K</abbr>
+      <span class="element__name">钾</span>
+      <span class="element__atomic-number">19</span>
+      <span class="element__atomic-mass">39.098</span>
+      <p class="tooltip top-tooltip">钾(jiǎ) - Potassium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="312.45" data-element-boiling-point="961" data-element-period="5" data-element-group="1" data-element-name="Rubidium">
+      <abbr class="element__abbr">Rb</abbr>
+      <span class="element__name">铷</span>
+      <span class="element__atomic-number">37</span>
+      <span class="element__atomic-mass">85.468</span>
+      <p class="tooltip top-tooltip">铷(rú) - Rubidium(rú)</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="301.7" data-element-boiling-point="944" data-element-period="6" data-element-group="1" data-element-name="Caesium">
+      <abbr class="element__abbr">Cs</abbr>
+      <span class="element__name">铯</span>
+      <span class="element__atomic-number">55</span>
+      <span class="element__atomic-mass">132.905</span>
+      <p class="tooltip top-tooltip">铯(sè) - Caesium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-metal" data-element-state="solid" data-element-melting-point="300" data-element-boiling-point="950" data-element-period="7" data-element-group="1" data-element-name="Francium">
+      <abbr class="element__abbr">Fr</abbr>
+      <span class="element__name">钫</span>
+      <span class="element__atomic-number">87</span>
+      <span class="element__atomic-mass">(223.000)</span>
+      <p class="tooltip top-tooltip">钫(fāng) - Francium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="1560" data-element-boiling-point="2742" data-element-period="2" data-element-group="2" data-element-name="Berilyum">
+      <abbr class="element__abbr">Be</abbr>
+      <span class="element__name">铍</span>
+      <span class="element__atomic-number">4</span>
+      <span class="element__atomic-mass">9.012</span>
+      <p class="tooltip right-tooltip">铍(pí) - Berilyum</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="923" data-element-boiling-point="1363" data-element-period="3" data-element-group="2" data-element-name="Magnesium">
+      <abbr class="element__abbr">Mg</abbr>
+      <span class="element__name">镁</span>
+      <span class="element__atomic-number">12</span>
+      <span class="element__atomic-mass">24.305</span>
+      <p class="tooltip right-tooltip">镁(měi) - Magnesium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="1115" data-element-boiling-point="1757" data-element-period="4" data-element-group="2" data-element-name="Calcium">
+      <abbr class="element__abbr">Ca</abbr>
+      <span class="element__name">钙</span>
+      <span class="element__atomic-number">20</span>
+      <span class="element__atomic-mass">40.078</span>      
+      <p class="tooltip top-tooltip">钙(gài) - Calcium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="1050" data-element-boiling-point="1650" data-element-period="5" data-element-group="2" data-element-name="Stronium">
+      <abbr class="element__abbr">Sr</abbr>
+      <span class="element__name">锶</span>
+      <span class="element__atomic-number">38</span>
+      <span class="element__atomic-mass">87.620</span>
+      <p class="tooltip top-tooltip">锶(sī) - Stronium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="1000" data-element-boiling-point="2118" data-element-period="6" data-element-group="2" data-element-name="Barium">
+      <abbr class="element__abbr">Ba</abbr>
+      <span class="element__name">钡</span>
+      <span class="element__atomic-number">56</span>
+      <span class="element__atomic-mass">137.327</span>
+      <p class="tooltip top-tooltip">钡(bèi) - Barium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="alkali-earth-metal" data-element-state="solid" data-element-melting-point="973" data-element-boiling-point="2010" data-element-period="7" data-element-group="2" data-element-name="Radium">
+      <abbr class="element__abbr">Ra</abbr>
+      <span class="element__name">镭</span>
+      <span class="element__atomic-number">88</span>
+      <span class="element__atomic-mass">(226.000)</span>
+      <p class="tooltip top-tooltip">镭(léi) - Radium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1814" data-element-boiling-point="3109" data-element-period="4" data-element-group="3" data-element-name="Scandium">
+      <abbr class="element__abbr">Sc</abbr>
+      <span class="element__name">钪</span>
+      <span class="element__atomic-number">21</span>
+      <span class="element__atomic-mass">44.956</span>
+      <p class="tooltip top-tooltip">钪(kàng) - Scandium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1799" data-element-boiling-point="3203" data-element-period="5" data-element-group="3" data-element-name="Yttrium">
+      <abbr class="element__abbr">Y</abbr>
+      <span class="element__name">钇</span>
+      <span class="element__atomic-number">39</span>
+      <span class="element__atomic-mass">88.906</span>
+      <p class="tooltip top-tooltip">钇(yǐ) - Yttrium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-name="Lanthanoids" data-element-melting-point="0" data-element-boiling-point="7001">
+      <span class="element__name">57-71</span>
+      <span class="element__name">镧系</span>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-name="Actinoids" data-element-melting-point="0" data-element-boiling-point="7001">
+      <span class="element__name">89-103</span>
+      <span class="element__name">锕系</span>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1941" data-element-boiling-point="3560" data-element-period="4" data-element-group="4" data-element-name="Titanium">
+      <abbr class="element__abbr">Ti</abbr>
+      <span class="element__name">钛</span>
+      <span class="element__atomic-number">22</span>
+      <span class="element__atomic-mass">47.867</span>
+      <p class="tooltip top-tooltip">钛(tài) - Titanium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2128" data-element-boiling-point="4650" data-element-period="5" data-element-group="4" data-element-name="Zirconium">
+      <abbr class="element__abbr">Zr</abbr>
+      <span class="element__name">锆</span>
+      <span class="element__atomic-number">40</span>
+      <span class="element__atomic-mass">91.224</span>
+      <p class="tooltip top-tooltip">锆(gào) - Zirconium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2506" data-element-boiling-point="4876" data-element-period="6" data-element-group="4" data-element-name="Hafnium">
+      <abbr class="element__abbr">Hf</abbr>
+      <span class="element__name">铪</span>
+      <span class="element__atomic-number">72</span>
+      <span class="element__atomic-mass">178.490</span>
+      <p class="tooltip top-tooltip">铪(hā) - Hafnium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="4" data-element-name="Rutherfordium">
+      <abbr class="element__abbr">Rf</abbr>
+      <span class="element__name">𬬻</span>
+      <span class="element__atomic-number">104</span>
+      <span class="element__atomic-mass">(267.000)</span>
+      <p class="tooltip top-tooltip">𬬻(lú) - Rutherfordium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2183" data-element-boiling-point="3680" data-element-period="4" data-element-group="5" data-element-name="Vanadium">
+      <abbr class="element__abbr">V</abbr>
+      <span class="element__name">钒</span>
+      <span class="element__atomic-number">23</span>
+      <span class="element__atomic-mass">50.942</span>
+      <p class="tooltip top-tooltip">钒(fán) - Vanadium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2750" data-element-boiling-point="5017" data-element-period="5" data-element-group="5" data-element-name="Niobium">
+      <abbr class="element__abbr">Nb</abbr>
+      <span class="element__name">铌</span>
+      <span class="element__atomic-number">41</span>
+      <span class="element__atomic-mass">92.906</span>
+      <p class="tooltip top-tooltip">铌(ní) - Niobium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="3290" data-element-boiling-point="5731" data-element-period="6" data-element-group="5" data-element-name="Tantalum">
+      <abbr class="element__abbr">Ta</abbr>
+      <span class="element__name">钽</span>
+      <span class="element__atomic-number">72</span>
+      <span class="element__atomic-mass">180.947</span>
+      <p class="tooltip top-tooltip">钽(tǎn) - Tantalum</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="5" data-element-name="Dubnium">
+      <abbr class="element__abbr">Db</abbr>
+      <span class="element__name">𬭊</span>
+      <span class="element__atomic-number">105</span>
+      <span class="element__atomic-mass">(268.000)</span>
+      <p class="tooltip top-tooltip">𬭊(dù) - Dubnium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2180" data-element-boiling-point="2944" data-element-period="4" data-element-group="6" data-element-name="Chromium">
+      <abbr class="element__abbr">Cr</abbr>
+      <span class="element__name">铬</span>
+      <span class="element__atomic-number">24</span>
+      <span class="element__atomic-mass">51.996</span>
+      <p class="tooltip top-tooltip">铬(gè) - Chromium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2896" data-element-boiling-point="4912" data-element-period="5" data-element-group="6" data-element-name="Molybdenum">
+      <abbr class="element__abbr">Mo</abbr>
+      <span class="element__name">钼</span>
+      <span class="element__atomic-number">42</span>
+      <span class="element__atomic-mass">95.950</span>
+      <p class="tooltip top-tooltip">钼(mù) - Molyb-denum</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="3695" data-element-boiling-point="6203" data-element-period="6" data-element-group="6" data-element-name="Tungsten">
+      <abbr class="element__abbr">W</abbr>
+      <span class="element__name">钨</span>
+      <span class="element__atomic-number">73</span>
+      <span class="element__atomic-mass">183.840</span>
+      <p class="tooltip top-tooltip">钨(wū) - Tungsten</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="6" data-element-name="Seaborgium">
+      <abbr class="element__abbr">Sg</abbr>
+      <span class="element__name">𬭳</span>
+      <span class="element__atomic-number">106</span>
+      <span class="element__atomic-mass">(268.000)</span>
+      <p class="tooltip top-tooltip">𬭳(xǐ) - Seaborgium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1519" data-element-boiling-point="2334" data-element-period="4" data-element-group="7" data-element-name="Manganese">
+      <abbr class="element__abbr">Mn</abbr>
+      <span class="element__name">锰</span>
+      <span class="element__atomic-number">25</span>
+      <span class="element__atomic-mass">54.938</span>
+      <p class="tooltip top-tooltip">锰(měng) - Manganese</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2430" data-element-boiling-point="4538" data-element-period="5" data-element-group="7" data-element-name="Technetium">
+      <abbr class="element__abbr">Tc</abbr>
+      <span class="element__name">锝</span>
+      <span class="element__atomic-number">43</span>
+      <span class="element__atomic-mass">(98.000)</span>
+      <p class="tooltip top-tooltip">锝(dé) - Technetium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="3459" data-element-boiling-point="5903" data-element-period="6" data-element-group="7" data-element-name="Rhenium">
+      <abbr class="element__abbr">Re</abbr>
+      <span class="element__name">铼</span>
+      <span class="element__atomic-number">74</span>
+      <span class="element__atomic-mass">186.207</span>
+      <p class="tooltip top-tooltip">铼(lái) - Rhenium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="7" data-element-name="Bohrium">
+      <abbr class="element__abbr">Bh</abbr>
+      <span class="element__name">𬭛</span>
+      <span class="element__atomic-number">107</span>
+      <span class="element__atomic-mass">(270.000)</span>
+      <p class="tooltip top-tooltip">𬭛(bō) - Bohrium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1811" data-element-boiling-point="3134" data-element-period="4" data-element-group="8" data-element-name="Iron">
+      <abbr class="element__abbr">Fe</abbr>
+      <span class="element__name">铁</span>
+      <span class="element__atomic-number">26</span>
+      <span class="element__atomic-mass">55.845</span>
+      <p class="tooltip top-tooltip">铁(tiě) - Iron</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2607" data-element-boiling-point="4423" data-element-period="5" data-element-group="8" data-element-name="Ruthenium">
+      <abbr class="element__abbr">Ru</abbr>
+      <span class="element__name">钌</span>
+      <span class="element__atomic-number">44</span>
+      <span class="element__atomic-mass">101.070</span>
+      <p class="tooltip top-tooltip">钌(liǎo) - Ruthenium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="3306" data-element-boiling-point="5285" data-element-period="6" data-element-group="8" data-element-name="Osmium">
+      <abbr class="element__abbr">Os</abbr>
+      <span class="element__name">锇</span>
+      <span class="element__atomic-number">75</span>
+      <span class="element__atomic-mass">190.230</span>
+      <p class="tooltip top-tooltip">锇(é) - Osmium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="8" data-element-name="Hassium">
+      <abbr class="element__abbr">Hs</abbr>
+      <span class="element__name">𬭶</span>
+      <span class="element__atomic-number">108</span>
+      <span class="element__atomic-mass">(277.000)</span>
+      <p class="tooltip top-tooltip">𬭶(hēi) - Hassium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1768" data-element-boiling-point="3200" data-element-period="4" data-element-group="9" data-element-name="Cobalt">
+      <abbr class="element__abbr">Co</abbr>
+      <span class="element__name">钴</span>
+      <span class="element__atomic-number">27</span>
+      <span class="element__atomic-mass">58.993</span>
+      <p class="tooltip top-tooltip">钴(gǔ) - Cobalt</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2237" data-element-boiling-point="3968" data-element-period="5" data-element-group="9" data-element-name="Rhodium">
+      <abbr class="element__abbr">Rh</abbr>
+      <span class="element__name">铑</span>
+      <span class="element__atomic-number">45</span>
+      <span class="element__atomic-mass">102.905</span>
+      <p class="tooltip top-tooltip">铑(lǎo) - Rhodium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2719" data-element-boiling-point="4403" data-element-period="6" data-element-group="9" data-element-name="Iridium">
+      <abbr class="element__abbr">Ir</abbr>
+      <span class="element__name">铱</span>
+      <span class="element__atomic-number">76</span>
+      <span class="element__atomic-mass">192.217</span>
+      <p class="tooltip top-tooltip">铱(yī) - Iridium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="9" data-element-name="Meitnerium">
+      <abbr class="element__abbr">Mt</abbr>
+      <span class="element__name">鿏</span>
+      <span class="element__atomic-number">109</span>
+      <span class="element__atomic-mass">(278.000)</span>
+      <p class="tooltip top-tooltip">鿏(mài) - Meitnerium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1728" data-element-boiling-point="3003" data-element-period="4" data-element-group="10" data-element-name="Nickel">
+      <abbr class="element__abbr">Ni</abbr>
+      <span class="element__name">镍</span>
+      <span class="element__atomic-number">28</span>
+      <span class="element__atomic-mass">58.963</span>
+      <p class="tooltip top-tooltip">镍(niè) - Nickel</p>      
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1828.05" data-element-boiling-point="3236" data-element-period="5" data-element-group="10" data-element-name="Palladium">
+      <abbr class="element__abbr">Pd</abbr>
+      <span class="element__name">钯</span>
+      <span class="element__atomic-number">46</span>
+      <span class="element__atomic-mass">106.420</span>
+      <p class="tooltip top-tooltip">钯(pá) - Palladium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="2041.4" data-element-boiling-point="4098" data-element-period="6" data-element-group="10" data-element-name="Platinum">
+      <abbr class="element__abbr">Pt</abbr>
+      <span class="element__name">铂</span>
+      <span class="element__atomic-number">77</span>
+      <span class="element__atomic-mass">195.084</span>
+      <p class="tooltip top-tooltip">铂(bó) - Platinum</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="10" data-element-name="Darmstadtium">
+      <abbr class="element__abbr">Ds</abbr>
+      <span class="element__name">𫟼</span>
+      <span class="element__atomic-number">110</span>
+      <span class="element__atomic-mass">(281.000)</span>
+      <p class="tooltip top-tooltip">𫟼(dá) - Darmstadtium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1357.77" data-element-boiling-point="2835" data-element-period="4" data-element-group="11" data-element-name="Copper">
+      <abbr class="element__abbr">Cu</abbr>
+      <span class="element__name">铜</span>
+      <span class="element__atomic-number">29</span>
+      <span class="element__atomic-mass">63.546</span>
+      <p class="tooltip top-tooltip">铜(tóng) - Copper</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1234.93" data-element-boiling-point="2435" data-element-period="5" data-element-group="11" data-element-name="Silver">
+      <abbr class="element__abbr">Ag</abbr>
+      <span class="element__name">银</span>
+      <span class="element__atomic-number">47</span>
+      <span class="element__atomic-mass">107.868</span>
+      <p class="tooltip top-tooltip">银(yín) - Silver</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="1337.33" data-element-boiling-point="3243" data-element-period="6" data-element-group="11" data-element-name="Gold">
+      <abbr class="element__abbr">Au</abbr>
+      <span class="element__name">金</span>
+      <span class="element__atomic-number">78</span>
+      <span class="element__atomic-mass">107.868</span>
+      <p class="tooltip top-tooltip">金(jīn) - Gold</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="11" data-element-name="Roentgenium">
+      <abbr class="element__abbr">Rg</abbr>
+      <span class="element__name">𬬭</span>
+      <span class="element__atomic-number">111</span>
+      <span class="element__atomic-mass">(282.000)</span>
+      <p class="tooltip top-tooltip">𬬭(lún) - Roentgenium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="692.68" data-element-boiling-point="1180" data-element-period="4" data-element-group="12" data-element-name="Zinc">
+      <abbr class="element__abbr">Zn</abbr>
+      <span class="element__name">锌</span>
+      <span class="element__atomic-number">30</span>
+      <span class="element__atomic-mass">65.380</span>
+      <p class="tooltip top-tooltip">锌(xīn) - Zinc</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="solid" data-element-melting-point="594.22" data-element-boiling-point="1040" data-element-period="5" data-element-group="12" data-element-name="Cadmium">
+      <abbr class="element__abbr">Cd</abbr>
+      <span class="element__name">镉</span>
+      <span class="element__atomic-number">48</span>
+      <span class="element__atomic-mass">112.414</span>
+      <p class="tooltip top-tooltip">镉(gé) - Cadmium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="transition-metal" data-element-state="liquid" data-element-melting-point="234.3210" data-element-boiling-point="629.88" data-element-period="6" data-element-group="12" data-element-name="Mercury">
+      <abbr class="element__abbr">Hg</abbr>
+      <span class="element__name">汞</span>
+      <span class="element__atomic-number">79</span>
+      <span class="element__atomic-mass">200.592</span>
+      <p class="tooltip top-tooltip">汞(gǒng) - Mercury</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="12" data-element-name="Copernicium">
+      <abbr class="element__abbr">Cn</abbr>
+      <span class="element__name">鎶</span>
+      <span class="element__atomic-number">112</span>
+      <span class="element__atomic-mass">(285.000)</span>
+      <p class="tooltip top-tooltip">鎶(gē) - Copernicium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="2349" data-element-boiling-point="4200" data-element-period="2" data-element-group="13" data-element-name="Boron">
+      <abbr class="element__abbr">B</abbr>
+      <span class="element__name">硼</span>
+      <span class="element__atomic-number">5</span>
+      <span class="element__atomic-mass">10.810</span>
+      <p class="tooltip left-tooltip">硼(péng) - Boron</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="933.47" data-element-boiling-point="2743" data-element-period="3" data-element-group="13" data-element-name="Aluminium">
+      <abbr class="element__abbr">Al</abbr>
+      <span class="element__name">铝</span>
+      <span class="element__atomic-number">13</span>
+      <span class="element__atomic-mass">26.982</span>
+      <p class="tooltip left-tooltip">铝(lǚ) - Aluminium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="302.9146" data-element-boiling-point="2673" data-element-period="4" data-element-group="13" data-element-name="Galium">
+      <abbr class="element__abbr">Ga</abbr>
+      <span class="element__name">镓</span>
+      <span class="element__atomic-number">31</span>
+      <span class="element__atomic-mass">69.723</span>
+      <p class="tooltip top-tooltip">镓(jiā) - Galium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="429.7485" data-element-boiling-point="2345" data-element-period="5" data-element-group="13" data-element-name="Indium">
+      <abbr class="element__abbr">In</abbr>
+      <span class="element__name">铟</span>
+      <span class="element__atomic-number">49</span>
+      <span class="element__atomic-mass">114.818</span>
+      <p class="tooltip top-tooltip">铟(yīn) - Indium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="577" data-element-boiling-point="1746" data-element-period="6" data-element-group="13" data-element-name="Thalium">
+      <abbr class="element__abbr">Th</abbr>
+      <span class="element__name">铊</span>
+      <span class="element__atomic-number">81</span>
+      <span class="element__atomic-mass">204.380</span>
+      <p class="tooltip top-tooltip">铊(tā) - Thalium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-period="7" data-element-group="13" data-element-name="Nihonium" data-element-melting-point="unknown" data-element-boiling-point="unknown">
+      <abbr class="element__abbr">Nh</abbr>
+      <span class="element__name">鉨</span>
+      <span class="element__atomic-number">113</span>
+      <span class="element__atomic-mass">(286.000)</span>
+      <p class="tooltip top-tooltip">鉨(nǐ) - Nihonium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="solid" data-element-melting-point="3915" data-element-boiling-point="4600" data-element-period="2" data-element-group="14" data-element-name="Carbon">
+      <abbr class="element__abbr">C</abbr>
+      <span class="element__name">碳</span>
+      <span class="element__atomic-number">6</span>
+      <span class="element__atomic-mass">12.001</span>
+      <p class="tooltip top-tooltip">碳(tàn) - Carbon</p>
+
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="1687" data-element-boiling-point="3538" data-element-period="3" data-element-group="14" data-element-name="Silicon">
+      <abbr class="element__abbr">Si</abbr>
+      <span class="element__name">硅</span>
+      <span class="element__atomic-number">14</span>
+      <span class="element__atomic-mass">28.085</span>
+      <p class="tooltip top-tooltip">硅(guī) - Silicon</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="1211.40" data-element-boiling-point="3106" data-element-period="4" data-element-group="14" data-element-name="Germanium">
+      <abbr class="element__abbr">Ge</abbr>
+      <span class="element__name">锗</span>
+      <span class="element__atomic-number">32</span>
+      <span class="element__atomic-mass">72.630</span>
+      <p class="tooltip top-tooltip">锗(zhě) - Germanium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="505.08" data-element-boiling-point="2875" data-element-period="5" data-element-group="14" data-element-name="Tin">
+      <abbr class="element__abbr">Sn</abbr>
+      <span class="element__name">锡</span>
+      <span class="element__atomic-number">50</span>
+      <span class="element__atomic-mass">118.710</span>
+      <p class="tooltip top-tooltip">锡(xī) - Tin</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="600.61" data-element-boiling-point="2022" data-element-period="6" data-element-group="14" data-element-name="Lead">
+      <abbr class="element__abbr">Pb</abbr>
+      <span class="element__name">铅</span>
+      <span class="element__atomic-number">82</span>
+      <span class="element__atomic-mass">207.200</span>
+      <p class="tooltip top-tooltip">铅(qiān) - Lead</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="14" data-element-name="Flevorium">
+      <abbr class="element__abbr">Fl</abbr>
+      <span class="element__name">鈇</span>
+      <span class="element__atomic-number">114</span>
+      <span class="element__atomic-mass">(289.000)</span>
+      <p class="tooltip top-tooltip">鈇(fū) - Flevorium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="gas" data-element-melting-point="63.15" data-element-boiling-point="77.355" data-element-period="2" data-element-group="15" data-element-name="Nitrogen">
+      <abbr class="element__abbr">N</abbr>
+      <span class="element__name">氮</span>
+      <span class="element__atomic-number">7</span>
+      <span class="element__atomic-mass">14.007</span>
+      <p class="tooltip top-tooltip">氮(dàn) - Nitrogen</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="solid" data-element-melting-point="317.2" data-element-boiling-point="553" data-element-period="3" data-element-group="15" data-element-name="Phosphorus">
+      <abbr class="element__abbr">P</abbr>
+      <span class="element__name">磷</span>
+      <span class="element__atomic-number">15</span>
+      <span class="element__atomic-mass">30.974</span>
+      <p class="tooltip top-tooltip">磷(lín) - Phosphorus</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="887" data-element-boiling-point="887" data-element-period="4" data-element-group="15" data-element-name="Arsenic">
+      <abbr class="element__abbr">As</abbr>
+      <span class="element__name">砷</span>
+      <span class="element__atomic-number">33</span>
+      <span class="element__atomic-mass">74.922</span>
+      <p class="tooltip top-tooltip">砷(shēn) - Arsenic</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="903.78" data-element-boiling-point="1908" data-element-period="5" data-element-group="15" data-element-name="Antimony">
+      <abbr class="element__abbr">Sb</abbr>
+      <span class="element__name">锑</span>
+      <span class="element__atomic-number">51</span>
+      <span class="element__atomic-mass">121.760</span>
+      <p class="tooltip top-tooltip">锑(tī) - Antimony</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="544.7" data-element-boiling-point="1837" data-element-period="6" data-element-group="15" data-element-name="Bismuth">
+      <abbr class="element__abbr">Bi</abbr>
+      <span class="element__name">铋</span>
+      <span class="element__atomic-number">83</span>
+      <span class="element__atomic-mass">208.980</span>
+      <p class="tooltip top-tooltip">铋(bì) - Bismuth</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="15" data-element-name="Moscovium">
+      <abbr class="element__abbr">Mc</abbr>
+      <span class="element__name">镆</span>
+      <span class="element__atomic-number">115</span>
+      <span class="element__atomic-mass">(290.000)</span>
+      <p class="tooltip top-tooltip">镆(mò) - Moscovium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="gas" data-element-melting-point="54.36" data-element-boiling-point="90.188" data-element-period="2" data-element-group="16" data-element-name="Oxygen">
+      <abbr class="element__abbr">O</abbr>
+      <span class="element__name">氧</span>
+      <span class="element__atomic-number">8</span>
+      <span class="element__atomic-mass">15.999</span>
+      <p class="tooltip top-tooltip">氧(yǎng) - Oxygen</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="solid" data-element-melting-point="54.36" data-element-boiling-point="717.8" data-element-period="3" data-element-group="16" data-element-name="Sulfur">
+      <abbr class="element__abbr">S</abbr>
+      <span class="element__name">硫</span>
+      <span class="element__atomic-number">16</span>
+      <span class="element__atomic-mass">32.060</span>
+      <p class="tooltip top-tooltip">硫(liú) - Sulfur</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="solid" data-element-melting-point="494" data-element-boiling-point="958" data-element-period="4" data-element-group="16" data-element-name="Selenium">
+      <abbr class="element__abbr">Se</abbr>
+      <span class="element__name">硒</span>
+      <span class="element__atomic-number">34</span>
+      <span class="element__atomic-mass">78.971</span>
+      <p class="tooltip top-tooltip">硒(xī) - Selenium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="722.66" data-element-boiling-point="1261" data-element-period="5" data-element-group="16" data-element-name="Tellurium">
+      <abbr class="element__abbr">Te</abbr>
+      <span class="element__name">碲</span>
+      <span class="element__atomic-number">52</span>
+      <span class="element__atomic-mass">127.600</span>
+      <p class="tooltip top-tooltip">碲(dì) - Tellurium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="post-transition-metal" data-element-state="solid" data-element-melting-point="527" data-element-boiling-point="1235" data-element-period="6" data-element-group="16" data-element-name="Polonium">
+      <abbr class="element__abbr">Po</abbr>
+      <span class="element__name">钋</span>
+      <span class="element__atomic-number">84</span>
+      <span class="element__atomic-mass">(209.000)</span>
+      <p class="tooltip top-tooltip">钋(pō) - Polonium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="16" data-element-name="Livemorium">
+      <abbr class="element__abbr">Lv</abbr>
+      <span class="element__name">鉝</span>
+      <span class="element__atomic-number">116</span>
+      <span class="element__atomic-mass">(293.000)</span>
+      <p class="tooltip top-tooltip">鉝(lì) - Livemorium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="gas" data-element-melting-point="53.48" data-element-boiling-point="85.03" data-element-period="2" data-element-group="17" data-element-name="Fluorine">
+      <abbr class="element__abbr">F</abbr>
+      <span class="element__name">氟</span>
+      <span class="element__atomic-number">9</span>
+      <span class="element__atomic-mass">18.998</span>
+      <p class="tooltip top-tooltip">氟(fú) - Fluorine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="gas" data-element-melting-point="171.6" data-element-boiling-point="239.11" data-element-period="3" data-element-group="17" data-element-name="Chlorine">
+      <abbr class="element__abbr">Cl</abbr>
+      <span class="element__name">氯</span>
+      <span class="element__atomic-number">17</span>
+      <span class="element__atomic-mass">35.450</span>
+      <p class="tooltip top-tooltip">氯(lǜ) - Chlorine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="liquid" data-element-melting-point="265.8" data-element-boiling-point="332" data-element-period="4" data-element-group="17" data-element-name="Bromine">
+      <abbr class="element__abbr">Br</abbr>
+      <span class="element__name">溴</span>
+      <span class="element__atomic-number">35</span>
+      <span class="element__atomic-mass">79.904</span>
+      <p class="tooltip top-tooltip">溴(xiù) - Bromine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="other-nonmetal" data-element-state="solid" data-element-melting-point="386.85" data-element-boiling-point="457.4" data-element-period="5" data-element-group="17" data-element-name="Iodine">
+      <abbr class="element__abbr">I</abbr>
+      <span class="element__name">碘</span>
+      <span class="element__atomic-number">53</span>
+      <span class="element__atomic-mass">126.904</span>
+      <p class="tooltip top-tooltip">碘(diǎn) - Iodine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="metalloid" data-element-state="solid" data-element-melting-point="575" data-element-boiling-point="610" data-element-period="7" data-element-group="17" data-element-name="Astatine">
+      <abbr class="element__abbr">At</abbr>
+      <span class="element__name">砹</span>
+      <span class="element__atomic-number">85</span>
+      <span class="element__atomic-mass">(210.000)</span>
+      <p class="tooltip top-tooltip">砹(ài) - Astatine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="17" data-element-name="Tennessine">
+      <abbr class="element__abbr">Ts</abbr>
+      <span class="element__name">钿</span>
+      <span class="element__atomic-number">117</span>
+      <span class="element__atomic-mass">(294.000)</span>
+      <p class="tooltip top-tooltip">钿(diàn) - Tennessine</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="0.95" data-element-boiling-point="4.222" data-element-period="1" data-element-group="18" data-element-name="Helium">
+      <abbr class="element__abbr">He</abbr>
+      <span class="element__name">氦</span>
+      <span class="element__atomic-number">2</span>
+      <span class="element__atomic-mass">4.002</span>
+      <p class="tooltip left-tooltip">氦(hài) - Helium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="24.56" data-element-boiling-point="27.104" data-element-period="2" data-element-group="18" data-element-name="Neon">
+      <abbr class="element__abbr">Ne</abbr>
+      <span class="element__name">氖</span>
+      <span class="element__atomic-number">10</span>
+      <span class="element__atomic-mass">20.180</span>
+      <p class="tooltip top-tooltip">氖(nǎi) - Neon</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="83.81" data-element-boiling-point="87.302" data-element-period="3" data-element-group="18" data-element-name="Argon">
+      <abbr class="element__abbr">Ar</abbr>
+      <span class="element__name">氩</span>
+      <span class="element__atomic-number">18</span>
+      <span class="element__atomic-mass">39.948</span>
+      <p class="tooltip top-tooltip">氩(yà) - Argon</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="115.78" data-element-boiling-point="119.93" data-element-period="4" data-element-group="18" data-element-name="Krypton">
+      <abbr class="element__abbr">Kr</abbr>
+      <span class="element__name">氪</span>
+      <span class="element__atomic-number">36</span>
+      <span class="element__atomic-mass">83.798</span>
+      <p class="tooltip top-tooltip">氪(kè) - Krypton</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="161.40" data-element-boiling-point="165.051" data-element-period="5" data-element-group="18" data-element-name="Xenon">
+      <abbr class="element__abbr">Xe</abbr>
+      <span class="element__name">氙</span>
+      <span class="element__atomic-number">54</span>
+      <span class="element__atomic-mass">131.293</span>
+      <p class="tooltip top-tooltip">氙(xiān) - Xenon</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="noble-gas" data-element-state="gas" data-element-melting-point="202" data-element-boiling-point="211.5" data-element-period="6" data-element-group="18" data-element-name="Radon">
+      <abbr class="element__abbr">Rn</abbr>
+      <span class="element__name">氡</span>
+      <span class="element__atomic-number">86</span>
+      <span class="element__atomic-mass">(222.000)</span>
+      <p class="tooltip top-tooltip">氡(dōng) - Radon</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="unknown" data-element-state="unknown" data-element-melting-point="unknown" data-element-boiling-point="unknown" data-element-period="7" data-element-group="18" data-element-symbol="Og" data-element-name="Oganesson">
+      <abbr class="element__abbr">Og</abbr>
+      <span class="element__name">气奥</span>
+      <span class="element__atomic-number">118</span>
+      <span class="element__atomic-mass">(294.000)</span>
+      <p class="tooltip top-tooltip">气奥(ào) - Oganesson</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1193" data-element-boiling-point="3737" data-element-period="6" data-element-name="Lanthanum">
+      <abbr class="element__abbr">La</abbr>
+      <span class="element__name">镧</span>
+      <span class="element__atomic-number">57</span>
+      <span class="element__atomic-mass">138.905</span>
+      <p class="tooltip top-tooltip">镧(lán) - Lanthanum</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1068" data-element-boiling-point="3716" data-element-period="6" data-element-name="Cerium">
+      <abbr class="element__abbr">Ce</abbr>
+      <span class="element__name">铈</span>
+      <span class="element__atomic-number">58</span>
+      <span class="element__atomic-mass">140.116</span>
+      <p class="tooltip top-tooltip">铈(shì) - Cerium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1208" data-element-boiling-point="3403" data-element-period="6" data-element-name="Praseodymium">
+      <abbr class="element__abbr">Pr</abbr>
+      <span class="element__name">错</span>
+      <span class="element__atomic-number">59</span>
+      <span class="element__atomic-mass">140.907</span>
+      <p class="tooltip top-tooltip">错(cuò) - Praseodymium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1297" data-element-boiling-point="3347" data-element-period="6" data-element-name="Neodymium">
+      <abbr class="element__abbr">Nd</abbr>
+      <span class="element__name">钕</span>
+      <span class="element__atomic-number">60</span>
+      <span class="element__atomic-mass">144.242</span>
+      <p class="tooltip top-tooltip">钕(nǚ) - Neodymium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1315" data-element-boiling-point="3273" data-element-period="6" data-element-name="Promethium">
+      <abbr class="element__abbr">Pm</abbr>
+      <span class="element__name">钷</span>
+      <span class="element__atomic-number">61</span>
+      <span class="element__atomic-mass">(145,000)</span>
+      <p class="tooltip top-tooltip">钷(pǒ) - Promethium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1345" data-element-boiling-point="2173" data-element-period="6" data-element-name="Samarium">
+      <abbr class="element__abbr">Sm</abbr>
+      <span class="element__name">钐</span>
+      <span class="element__atomic-number">62</span>
+      <span class="element__atomic-mass">150.360</span>
+      <p class="tooltip top-tooltip">钐(shān) - Samarium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1099" data-element-boiling-point="1802" data-element-period="6" data-element-name="Europium">
+      <abbr class="element__abbr">Eu</abbr>
+      <span class="element__name">铕</span>
+      <span class="element__atomic-number">63</span>
+      <span class="element__atomic-mass">151.964</span>
+      <p class="tooltip top-tooltip">铕(yǒu) - Europium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1585" data-element-boiling-point="3273" data-element-period="6" data-element-name="Gadolinium">
+      <abbr class="element__abbr">Gd</abbr>
+      <span class="element__name">钆</span>
+      <span class="element__atomic-number">64</span>
+      <span class="element__atomic-mass">157.250</span>
+      <p class="tooltip top-tooltip">钆(gá) - Gadolinium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1629" data-element-boiling-point="3396" data-element-period="6" data-element-name="Terbium">
+      <abbr class="element__abbr">Tb</abbr>
+      <span class="element__name">铽</span>
+      <span class="element__atomic-number">65</span>
+      <span class="element__atomic-mass">157.250</span>
+      <p class="tooltip top-tooltip">铽(tè) - Terbium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1680" data-element-boiling-point="2840" data-element-period="6" data-element-name="Dysprosium">
+      <abbr class="element__abbr">Dy</abbr>
+      <span class="element__name">镝</span>
+      <span class="element__atomic-number">66</span>
+      <span class="element__atomic-mass">162.500</span>
+      <p class="tooltip top-tooltip">镝(dí) - Dysprosium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1734" data-element-boiling-point="2873" data-element-period="6" data-element-name="Holmium">
+      <abbr class="element__abbr">Ho</abbr>
+      <span class="element__name">钬</span>
+      <span class="element__atomic-number">67</span>
+      <span class="element__atomic-mass">164.930</span>
+      <p class="tooltip top-tooltip">钬(huǒ) - Holmium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1802" data-element-boiling-point="3141" data-element-period="6" data-element-name="Erbium">
+      <abbr class="element__abbr">Er</abbr>
+      <span class="element__name">铒</span>
+      <span class="element__atomic-number">68</span>
+      <span class="element__atomic-mass">167.259</span>
+      <p class="tooltip top-tooltip">铒(ěr) - Erbium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1818" data-element-boiling-point="2223" data-element-period="6" data-element-name="Thulium">
+      <abbr class="element__abbr">Tm</abbr>
+      <span class="element__name">铥</span>
+      <span class="element__atomic-number">69</span>
+      <span class="element__atomic-mass">168.934</span>
+      <p class="tooltip top-tooltip">铥(diū) - Thulium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1097" data-element-boiling-point="1469" data-element-period="6" data-element-name="Ytterbium">
+      <abbr class="element__abbr">Yb</abbr>
+      <span class="element__name">镱</span>
+      <span class="element__atomic-number">70</span>
+      <span class="element__atomic-mass">173.045</span>
+      <p class="tooltip top-tooltip">镱(yì) - Ytterbium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Lanthanoid" data-element-state="solid" data-element-melting-point="1925" data-element-boiling-point="3675" data-element-period="6" data-element-name="Lutetium">
+      <abbr class="element__abbr">Lu</abbr>
+      <span class="element__name">镥</span>
+      <span class="element__atomic-number">71</span>
+      <span class="element__atomic-mass">174.967</span>
+      <p class="tooltip top-tooltip">镥(lǔ) - Lutetium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1500" data-element-boiling-point="3500" data-element-period="7" data-element-name="Actinium">
+      <abbr class="element__abbr">Ac</abbr>
+      <span class="element__name">锕</span>
+      <span class="element__atomic-number">89</span>
+      <span class="element__atomic-mass">(227.000)</span>
+      <p class="tooltip top-tooltip">锕(ā) - Actinium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="2023" data-element-boiling-point="5061" data-element-period="7" data-element-name="Thorium">
+      <abbr class="element__abbr">Th</abbr>
+      <span class="element__name">钍</span>
+      <span class="element__atomic-number">90</span>
+      <span class="element__atomic-mass">232.038</span>
+      <p class="tooltip top-tooltip">钍(tǔ) - Thorium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1841" data-element-boiling-point="4300" data-element-period="7" data-element-name="Protactinium">
+      <abbr class="element__abbr">Pa</abbr>
+      <span class="element__name">镤</span>
+      <span class="element__atomic-number">91</span>
+      <span class="element__atomic-mass">231.035</span>
+      <p class="tooltip top-tooltip">镤(pú) - Protactinium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1405.3" data-element-boiling-point="4404" data-element-period="7" data-element-name="Uranium">
+      <abbr class="element__abbr">U</abbr>
+      <span class="element__name">铀</span>
+      <span class="element__atomic-number">92</span>
+      <span class="element__atomic-mass">238.028</span>
+      <p class="tooltip top-tooltip">铀(yóu) - Uranium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="912" data-element-boiling-point="4447" data-element-period="7" data-element-name="Neptunium">
+      <abbr class="element__abbr">Np</abbr>
+      <span class="element__name">镎</span>
+      <span class="element__atomic-number">93</span>
+      <span class="element__atomic-mass">(237.000)</span>
+      <p class="tooltip top-tooltip">镎(ná) - Neptunium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="912.5" data-element-boiling-point="3505" data-element-period="7" data-element-name="Plutonium">
+      <abbr class="element__abbr">Pu</abbr>
+      <span class="element__name">钚</span>
+      <span class="element__atomic-number">94</span>
+      <span class="element__atomic-mass">(244.000)</span>
+      <p class="tooltip top-tooltip">钚(bù) - Plutonium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1449" data-element-boiling-point="2880" data-element-period="7" data-element-name="Americium">
+      <abbr class="element__abbr">Am</abbr>
+      <span class="element__name">镅</span>
+      <span class="element__atomic-number">95</span>
+      <span class="element__atomic-mass">(243.000)</span>
+      <p class="tooltip top-tooltip">镅(méi) - Americium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1613" data-element-boiling-point="3383" data-element-period="7" data-element-name="Curium">
+      <abbr class="element__abbr">Cm</abbr>
+      <span class="element__name">锔</span>
+      <span class="element__atomic-number">96</span>
+      <span class="element__atomic-mass">(247.000)</span>
+      <p class="tooltip top-tooltip">锔(jū) - Curium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1259" data-element-boiling-point="2900" data-element-period="7" data-element-name="Berkelium">
+      <abbr class="element__abbr">Bk</abbr>
+      <span class="element__name">锫</span>
+      <span class="element__atomic-number">97</span>
+      <span class="element__atomic-mass">(247.000)</span>
+      <p class="tooltip top-tooltip">锫(péi) - Berkelium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1173" data-element-boiling-point="1743" data-element-period="7" data-element-name="Californium">
+      <abbr class="element__abbr">Cf</abbr>
+      <span class="element__name">锎</span>
+      <span class="element__atomic-number">98</span>
+      <span class="element__atomic-mass">(251.000)</span>
+      <p class="tooltip top-tooltip">锎(kāi) - Californium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1133" data-element-boiling-point="1269" data-element-period="7" data-element-name="Einsteinium">
+      <abbr class="element__abbr">Es</abbr>
+      <span class="element__name">锿</span>
+      <span class="element__atomic-number">99</span>
+      <span class="element__atomic-mass">(252.000)</span>
+      <p class="tooltip top-tooltip">锿(āi) - Einsteinium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1133" data-element-boiling-point="1269" data-element-period="7" data-element-name="Fermium">
+      <abbr class="element__abbr">Fm</abbr>
+      <span class="element__name">镄</span>
+      <span class="element__atomic-number">100</span>
+      <span class="element__atomic-mass">(257.000)</span>
+      <p class="tooltip top-tooltip">镄(fèi) - Fermium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1133" data-element-boiling-point="unknown" data-element-period="7" data-element-name="Mendelevium">
+      <abbr class="element__abbr">Md</abbr>
+      <span class="element__name">钔</span>
+      <span class="element__atomic-number">101</span>
+      <span class="element__atomic-mass">(258.000)</span>
+      <p class="tooltip top-tooltip">钔(mén) - Mendelevium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1100" data-element-boiling-point="unknown" data-element-period="7" data-element-name="Nobelium">
+      <abbr class="element__abbr">No</abbr>
+      <span class="element__name">锘</span>
+      <span class="element__atomic-number">102</span>
+      <span class="element__atomic-mass">(259.000)</span>
+      <p class="tooltip top-tooltip">锘(nuò) - Nobelium</p>
+    </div>
+    <div class="element flex-row-wrap" data-element-type="Actinoid" data-element-state="solid" data-element-melting-point="1900" data-element-boiling-point="unknown" data-element-period="7" data-element-name="Lawrencium">
+      <abbr class="element__abbr">Lr</abbr>
+      <span class="element__name">铹</span>
+      <span class="element__atomic-number">103</span>
+      <span class="element__atomic-mass">(266.000)</span>
+      <p class="tooltip top-tooltip">铹(láo) - Lawrencium</p>
+    </div>
+  </section>
+  <section class="modal flex-row-wrap">
+    <dialog class="modal__dialog" open="">
+      <article class="modal__content">
+        <div class="modal__content__properties"></div>
+        <div class="atom"><div class="atom__core"></div></div>
+      </article>
+      <a class="modal__close">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path>
+            <path d="M0 0h24v24h-24z" fill="none"></path>
+        </svg>
+      </a>
+    </dialog>
+  </section>
+</main>
+    <script src="periodic_sample.js"></script>
+</body>
+</html>
